@@ -1,0 +1,12 @@
+{
+  "name": "mercadosmart-sync",
+  "compatibility_date": "2026-04-16",
+  "pages_build_output_dir": ".",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "COLOQUE_O_NOME_DO_BANCO",
+      "database_id": "COLOQUE_O_DATABASE_ID_AQUI"
+    }
+  ]
+}
