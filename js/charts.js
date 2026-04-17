@@ -202,25 +202,26 @@ function renderMonthlyChart(monthlyData) {
     if (monthlyChartInstance) { monthlyChartInstance.destroy(); monthlyChartInstance = null; }
     return;
   }
+
   if (emptyEl) emptyEl.classList.add('hidden');
+
+  const cur = DB.getSettings().currency || 'R$';
+
   if (!isChartAvailable()) {
-    renderSimpleBars(canvas, entries.map(([id, value]) => ({ label: (categories.find(c => c.id === id)?.name || id), value })), emptyEl, DB.getSettings().currency || 'R$');
+    renderSimpleBars(
+      canvas,
+      monthlyData.map(m => ({ label: m.label, value: m.total })),
+      emptyEl,
+      cur
+    );
     return;
   }
+
   hideFallbackBox(canvas);
   canvas.style.display = '';
 
   if (monthlyChartInstance) monthlyChartInstance.destroy();
   const { text, grid } = getChartColors();
-  const cur = DB.getSettings().currency || 'R$';
-  if (!isChartAvailable()) {
-    renderSimpleLine(canvas, monthlyData.map(m => ({ label: m.label, value: m.total })), cur);
-    return;
-  }
-  if (!isChartAvailable()) {
-    renderSimpleBars(canvas, entries.map(([id, value]) => ({ label: (categories.find(x => x.id === id)?.name || id), value })), null, cur);
-    return;
-  }
 
   monthlyChartInstance = new Chart(canvas, {
     type: 'bar',
@@ -322,8 +323,13 @@ function renderRepMonthlyLine(monthlyData) {
 
   const { text, grid } = getChartColors();
   const cur = DB.getSettings().currency || 'R$';
+
   if (!isChartAvailable()) {
-    renderSimpleBars(canvas, entries.map(([id, value]) => ({ label: (categories.find(x => x.id === id)?.name || id), value })), null, cur);
+    renderSimpleLine(
+      canvas,
+      monthlyData.map(m => ({ label: m.label, value: m.total })),
+      cur
+    );
     return;
   }
 
@@ -339,10 +345,10 @@ function renderRepMonthlyLine(monthlyData) {
         pointBackgroundColor: '#4fc3f7',
         pointBorderColor: isDarkTheme() ? '#16213e' : '#fff',
         pointBorderWidth: 2,
-        pointRadius: 5,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        tension: 0.35,
         fill: true,
-        tension: 0.4,
-        borderWidth: 2,
       }]
     },
     options: {
@@ -350,16 +356,17 @@ function renderRepMonthlyLine(monthlyData) {
       maintainAspectRatio: true,
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label(ctx) { return ` ${formatCurrency(ctx.parsed.y, cur)}`; } } }
+        tooltip: {
+          callbacks: {
+            label(ctx) { return ` ${formatCurrency(ctx.parsed.y, cur)}`; }
+          }
+        }
       },
       scales: {
         x: { ticks: { color: text }, grid: { display: false }, border: { display: false } },
-        y: {
-          ticks: { color: text, callback(v) { return `${cur} ${v}`; } },
-          grid: { color: grid }, border: { display: false }
-        }
+        y: { ticks: { color: text }, grid: { color: grid }, border: { display: false } }
       },
-      animation: { duration: 600 },
+      animation: { duration: 700 }
     }
   });
 }
