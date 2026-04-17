@@ -23,21 +23,21 @@ async function sha256(text) {
   return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function derivePasswordHash(password, salt, iterations = 120000) {
+async function derivePasswordHash(password, salt, iterations = 100000) {
   const keyMaterial = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
   const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: new TextEncoder().encode(salt), iterations }, keyMaterial, 256);
   return [...new Uint8Array(bits)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 async function hashPassword(password, salt) {
-  return `pbkdf2$120000$${await derivePasswordHash(password, salt, 120000)}`;
+  return `pbkdf2$100000$${await derivePasswordHash(password, salt, 100000)}`;
 }
 
 async function verifyPassword(password, user) {
   if (!user?.password_hash) return false;
   if (user.password_hash.startsWith('pbkdf2$')) {
     const [, iterationText, storedHash] = user.password_hash.split('$');
-    const iterations = Number(iterationText) || 120000;
+    const iterations = Number(iterationText) || 100000;
     const computed = await derivePasswordHash(password, user.salt, iterations);
     return computed === storedHash;
   }
