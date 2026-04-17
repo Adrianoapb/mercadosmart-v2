@@ -46,13 +46,36 @@
       Seus dados ficam separados por usuário e sincronizados com segurança.
     </p>
 
+   <div id="authOverlay" class="auth-overlay hidden">
+  <div class="auth-card">
+
+    <div class="auth-brand">🛒 MERCADOSMART PRO</div>
+
+    <h2 id="authTitle">Entrar na sua conta</h2>
+    <p class="auth-subtitle" id="authSubtitle">
+      Seus dados ficam separados por usuário e sincronizados com segurança.
+    </p>
+
+    <!-- LOGIN -->
     <form id="loginForm" class="auth-form">
       <input id="loginEmail" type="text" placeholder="Seu e-mail" />
       <input id="loginPassword" type="password" placeholder="Sua senha" />
       <button type="submit" class="auth-submit">Entrar</button>
     </form>
 
-    <button id="goRegisterBtn" class="auth-switch">Criar conta profissional</button>
+    <!-- CADASTRO -->
+    <form id="registerForm" class="auth-form hidden">
+      <input id="registerEmail" type="text" placeholder="Seu e-mail" />
+      <input id="registerPassword" type="password" placeholder="Crie uma senha" />
+      <input id="registerConfirm" type="password" placeholder="Confirmar senha" />
+      <button type="submit" class="auth-submit">Criar conta</button>
+    </form>
+
+    <!-- TROCA -->
+    <button id="switchAuth" class="auth-switch">
+      Criar conta profissional
+    </button>
+
   </div>
 </div>
 
