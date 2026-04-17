@@ -1779,18 +1779,166 @@ input:checked + .toggle-slider:before { transform: translateX(20px); background:
 }
 
 
-/* Auth profissional */
-.auth-overlay { position:fixed; inset:0; z-index:3000; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at top, rgba(93,91,255,.25), rgba(4,10,28,.92)); padding:24px; }
-.auth-card { width:min(420px, 100%); background:rgba(16,24,48,.96); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:24px; box-shadow:0 30px 80px rgba(0,0,0,.45); }
-.auth-brand { font-size:14px; letter-spacing:.08em; text-transform:uppercase; color:#98a2ff; margin-bottom:12px; }
-.auth-card h2 { margin:0 0 10px; }
-.auth-subtitle { color:var(--text-secondary); margin-bottom:18px; line-height:1.5; }
-.auth-form { display:grid; gap:12px; }
-.auth-submit { width:100%; justify-content:center; }
-.auth-switch { width:100%; margin-top:12px; }
-.header-user-chip { padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.08); color:var(--text-primary); font-size:12px; }
-.status-card.compact { display:grid; gap:4px; min-width:230px; }
-@media (max-width: 640px) { .auth-card { padding:18px; border-radius:20px; } .header-user-chip { display:none; } }
+/* ===== LOGIN PREMIUM FIXADO ===== */
+.auth-overlay,
+.auth-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top, rgba(93, 91, 255, 0.22), rgba(4, 10, 28, 0.94)),
+    linear-gradient(135deg, #0c1229, #10193a 55%, #0a1230);
+  backdrop-filter: blur(8px);
+}
+
+.auth-card {
+  width: min(420px, 100%);
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(12, 24, 58, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.auth-brand {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #98a2ff;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-card h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.15;
+  color: #eef2ff;
+  font-weight: 800;
+}
+
+.auth-subtitle {
+  color: #a9b3d1;
+  margin-bottom: 20px;
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.auth-form input,
+.auth-form .auth-input,
+.auth-card input[type="email"],
+.auth-card input[type="text"],
+.auth-card input[type="password"] {
+  width: 100%;
+  min-width: 0;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef2ff;
+  font-size: 15px;
+  box-shadow: none;
+}
+
+.auth-form input::placeholder,
+.auth-card input::placeholder {
+  color: #8e9abf;
+}
+
+.auth-form input:focus,
+.auth-card input:focus {
+  border-color: #58c6ff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(88, 198, 255, 0.12);
+}
+
+.auth-submit,
+.auth-btn,
+.auth-btn.primary,
+.auth-card button {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.auth-submit,
+.auth-btn.primary {
+  background: linear-gradient(135deg, #58c6ff, #46a8f3);
+  color: #fff;
+}
+
+.auth-submit:active,
+.auth-btn.primary:active {
+  transform: scale(0.99);
+}
+
+.auth-switch,
+.auth-btn.secondary {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 2px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: #c8d1ee;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.auth-switch:active,
+.auth-btn.secondary:active {
+  transform: scale(0.99);
+}
+
+@media (max-width: 640px) {
+  .auth-overlay,
+  .auth-screen {
+    padding: 18px;
+  }
+
+  .auth-card {
+    width: 100%;
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  .auth-card h2 {
+    font-size: 19px;
+  }
+
+  .auth-subtitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .auth-form input,
+  .auth-card input[type="email"],
+  .auth-card input[type="text"],
+  .auth-card input[type="password"],
+  .auth-submit,
+  .auth-btn,
+  .auth-switch {
+    height: 50px;
+    min-height: 50px;
+    font-size: 14px;
+  }
+}
 
 
 /* ===== Premium bank-like refinements ===== */
