@@ -38,18 +38,23 @@
   </div>
 
   <!-- MAIN APP -->
-  <div id="authOverlay" class="auth-overlay hidden">
-    <div class="auth-card hidden" id="authLoginCard">
-      <div class="auth-brand">🛒 MercadoSmart Pro</div>
-      <h2>Entrar na sua conta</h2>
-      <p class="auth-subtitle">Seus dados ficam separados por usuário e sincronizados com segurança.</p>
-      <form id="loginForm" class="auth-form">
-        <input type="email" id="loginEmail" class="styled-input-sm" placeholder="Seu e-mail" required />
-        <input type="password" id="loginPassword" class="styled-input-sm" placeholder="Sua senha" required />
-        <button type="submit" class="action-btn primary auth-submit">Entrar</button>
-      </form>
-      <button type="button" class="btn-outline auth-switch" id="goRegisterBtn">Criar conta profissional</button>
-    </div>
+ <div id="authOverlay" class="auth-overlay hidden">
+  <div class="auth-card">
+    <div class="auth-brand">🛒 MERCADOSMART PRO</div>
+    <h2>Entrar na sua conta</h2>
+    <p class="auth-subtitle">
+      Seus dados ficam separados por usuário e sincronizados com segurança.
+    </p>
+
+    <form id="loginForm" class="auth-form">
+      <input id="loginEmail" type="text" placeholder="Seu e-mail" />
+      <input id="loginPassword" type="password" placeholder="Sua senha" />
+      <button type="submit" class="auth-submit">Entrar</button>
+    </form>
+
+    <button id="goRegisterBtn" class="auth-switch">Criar conta profissional</button>
+  </div>
+</div>
 
     <div class="auth-card hidden" id="authRegisterCard">
       <div class="auth-brand">🛒 MercadoSmart Pro</div>
