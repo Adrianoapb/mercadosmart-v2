@@ -2,7 +2,7 @@
    MERCADOSMART - AUTENTICACAO PROFISSIONAL
    ========================================== */
 
-const Auth = (() => {
+window.Auth = (() => {
   const STORAGE_KEY = 'ms_auth_session_v1';
   let state = { token: '', user: null, checked: false };
 
